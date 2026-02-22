@@ -17,15 +17,10 @@ SESSION_TTL = 1800  # 30 minuti di vita per ogni sessione di gioco
 app = FastAPI(title="SMART RIE - Relational Inference Engine v1.0")
 
 # --- REDIS CONNECTION MANAGER ---
-try:
-    redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=0, decode_responses=True)
-    redis_client.ping()
-    USE_REDIS = True
-    print(f"✅ [SYSTEM] Redis Connected at {REDIS_HOST}:{REDIS_PORT}")
-except redis.ConnectionError:
-    USE_REDIS = False
-    print("⚠️ [SYSTEM] Redis not found. Using In-Memory Fallback (Warning: Data loss on restart).")
-    memory_store = {}
+# --- COPIA E INCOLLA QUESTO AL POSTO DEL BLOCCO TRY/EXCEPT ---
+USE_REDIS = False
+memory_store = {}
+print("⚠️ [SYSTEM] Redis bypassato correttamente. Utilizzo memoria locale.")
 
 # --- MODELLI DATI (Pydantic) ---
 
